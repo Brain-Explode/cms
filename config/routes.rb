@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
 devise_scope :user do
     root to: 'home#index'
-    get "sign_up" => "devise/sessions#new"
+    get "sign_in" => "devise/sessions#new"
     get "sign_out" => "devise/sessions#destroy"
 end
 
