@@ -21,7 +21,11 @@
         </div>
       </li>
     </ul>
-     <%= link_to "Войти", sign_in_url, class: "btn btn-outline-primary", style: "background-color:white" %>
+    <% if user_signed_in? %>
+      <%= link_to "Выйти", sign_out_url, class: "btn btn-outline-primary", style: "background-color:white" %>      
+        <% elsif %>
+      <%= link_to "Войти", sign_in_url, class: "btn btn-outline-primary", style: "background-color:white" %>
+    <% end %>
 
   </div>
 </nav>
