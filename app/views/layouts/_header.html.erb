@@ -22,12 +22,11 @@
       </li>
     </ul>
     <% if user_signed_in? %>
-      <div class="navbar-currentuser">Привет, <%= current_user.email %></div>
+      <div class="navbar-currentuser"><%= current_user.email %></div>
       <%= link_to "Выйти", sign_out_url, class: "btn btn-outline-primary", style: "background-color:white" %>      
       <% elsif %>
       <%= link_to "Войти", sign_in_url, class: "btn btn-outline-primary", style: "background-color:white" %>
       <%= link_to "Регистрация", new_user_registration_url, class: "btn btn-outline-primary", style: "background-color:white" %>
     <% end %>
-
   </div>
 </nav>
