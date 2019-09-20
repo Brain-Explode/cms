@@ -14,8 +14,12 @@
 
   <body>
     <%= render "layouts/header" %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
+    <main role="main">
+      <div class="container">
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+        <%= yield %>
+      </div>
+    </main>
   </body>
 </html>
