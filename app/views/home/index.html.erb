@@ -1,5 +1,7 @@
 <h1>Главная</h1>
-<p><%= link_to "Создать проект", new_project_url %><p>
+<% if user_signed_in? %>
+	<p><%= link_to "Создать проект", new_project_url %></p>
+<% end %>
 <p>Show all registered users:</p>
 <p>
 	<% @users.each do |f| %>

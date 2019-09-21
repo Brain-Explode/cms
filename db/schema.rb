@@ -21,8 +21,10 @@ ActiveRecord::Schema.define(version: 2019_09_21_192330) do
   create_table "tasks", force: :cascade do |t|
     t.string "title"
     t.text "body"
+    t.integer "project_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["project_id"], name: "index_tasks_on_project_id"
   end
 
   create_table "users", force: :cascade do |t|

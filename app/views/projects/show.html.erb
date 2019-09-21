@@ -1,7 +1,9 @@
 <h1 class="title">
 	<%= @project.project_title %>
 </h1>
+<% if user_signed_in? %>
 <p>
 	<%= link_to 'Изменить', edit_project_path(@project) %>
 	| <%= link_to 'Удалить', project_path(@project), method: :delete, data: { confirm: 'Вы уверены?'} %>
 </p>
+<% end %>
