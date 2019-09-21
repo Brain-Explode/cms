@@ -1,4 +1,8 @@
-<h1> Список проектов </h1>
+<h1>Список проектов</h1>
 <% @projects.each do |f| %>
-<p><%= link_to f.project_title, f %></p>
+	<p>
+		<%= link_to f.project_title, f %>
+		| <%= link_to 'Изменить', edit_project_path(f) %>
+		| <%= link_to 'Удалить', project_path(f), method: :delete, data: { confirm: 'Вы уверены?' } %>
+	</p>
 <%end%>
