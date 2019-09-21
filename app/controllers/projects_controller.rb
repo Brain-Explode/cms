@@ -7,9 +7,6 @@ class ProjectsController < ApplicationController
 		@project = Project.new
 	end
 
-	def edit
-	end
-
 	def create
 		@project = Project.new(project_params)
 
@@ -20,9 +17,23 @@ class ProjectsController < ApplicationController
 		end
 	end
 
+	def edit
+		@project = Project.find(params[:id])
+	end
+
+	def update
+		@project = Project.find(params[:id])
+
+		if @project.update(params[:project].permit(:project_title))
+			redirect_to @project
+		else
+			render 'edit'
+		end
+	end
+
 	def show
 		@project = Project.find(params[:id])
-end
+	end
 
 	private
 		def project_params
