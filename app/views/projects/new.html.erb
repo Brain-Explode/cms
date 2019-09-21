@@ -1,0 +1,12 @@
+<div class="row">
+	<div class="col-md-8 order-md-1">
+		<h1>Новый проект</h1>
+		<%= form_for :project, url: projects_path do |f| %>
+		<div class="col-md-6 mb-3">
+			<%= f.label "Введите название проекта:" %> <br />
+			<%= f.text_field :project_title, placeholder: "Название проекта", class: "form-control", style: "margin-bottom:10px" %>
+			<%= f.submit "Сохранить проект", class: "btn btn-primary btn-lg btn-block" %>
+		</div>
+		<%end%>
+	</div>
+</div>
