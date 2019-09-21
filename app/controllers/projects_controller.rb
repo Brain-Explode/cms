@@ -4,6 +4,7 @@ class ProjectsController < ApplicationController
 	end
 
 	def new
+		@project = Project.new
 	end
 
 	def edit
@@ -11,9 +12,12 @@ class ProjectsController < ApplicationController
 
 	def create
 		@project = Project.new(project_params)
-		@project.save
 
-		redirect_to projects_url
+		if @project.save
+			redirect_to @project
+		else
+			render 'new'
+		end
 	end
 
 	def show
