@@ -35,7 +35,7 @@ class ProjectsController < ApplicationController
 		@project = Project.find(params[:id])
 		@project.delete
 
-		redirect_to root_path
+		redirect_to @project
 	end
 
 	def show

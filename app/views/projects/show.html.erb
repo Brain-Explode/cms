@@ -7,3 +7,20 @@
 	| <%= link_to 'Удалить', project_path(@project), method: :delete, data: { confirm: 'Вы уверены?'} %>
 </p>
 <% end %>
+
+<div class="table-responsive">
+	<table class="table table-striped table-sm">
+  	<thead>
+    	<tr>
+				<th>Заголовок</th>
+				<% if user_signed_in? %>
+					<th>Опции</th>
+				<% end %>
+      </tr>
+    </thead>
+    <tbody>
+			<%= render @project.tasks %>
+    </tbody>
+  </table>
+</div>
+<%= render 'tasks/new' %>

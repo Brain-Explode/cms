@@ -1,0 +1,6 @@
+<tr>
+	<td><%= task.title %></td>
+	<% if current_user == User.find(3) %>
+		<td>edit | delete</td>
+	<% end %>
+</tr>
