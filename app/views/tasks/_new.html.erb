@@ -1,6 +1,5 @@
 <div class="row">
 	<div class="col-md-8 order-md-1">
-		<h3 style="margin-top: 5%">Добавить новую задачу</h3>
 		<%= form_for ([@project, @project.tasks.build]) do |f| %>
 			<div class="col-md-6 mb-3">
 				<%= f.text_field :title, placeholder: "Название задачи", class: "form-control", style: "margin-bottom:10px" %>
