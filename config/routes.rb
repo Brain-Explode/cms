@@ -10,5 +10,6 @@ Rails.application.routes.draw do
 	
 	resources :projects do
 		resources :tasks
+		resources :comments, shallow: true
 	end
 end

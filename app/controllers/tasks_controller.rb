@@ -27,8 +27,6 @@ class TasksController < ApplicationController
 	end
 
 	def show
-			@project = Project.find(params[:project_id])
-		@task = @project.tasks.find(params[:id])
 	end
 
 	private
