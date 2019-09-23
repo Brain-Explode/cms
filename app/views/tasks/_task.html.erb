@@ -1,6 +1,6 @@
 <tr>
 	<td><%= task.title %></td>
-	<% if current_user == User.find(3) %>
+	<% if current_user %>
 		<td><%= link_to 'Изменить', edit_project_task_path(task.project, task) %>
 		 | <%= link_to 'Удалить', [task.project, task], method: :delete, data: { confirm: 'Вы уверены?' } %>
 		</td>
