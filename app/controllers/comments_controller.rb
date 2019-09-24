@@ -2,6 +2,7 @@ class CommentsController < ApplicationController
 	before_action :find_project, only: [:create, :edit, :update, :destroy, :show]
 	before_action :find_task, only: [:create, :edit, :update, :destroy, :show]
 	before_action :find_comment, only: [:edit, :update, :destroy]
+	
 	def create
 		@comment = @task.comments.create(comment_params)
 
@@ -27,13 +28,13 @@ class CommentsController < ApplicationController
 	end
 
 	def destroy
-	@comment.delete
+		@comment.delete
 
-	redirect_to ([@project, @task])
+		redirect_to ([@project, @task])
 	end
 
 	private
-	
+
 	def comment_params
 		params.require(:comment).permit(:name, :body)
 	end
