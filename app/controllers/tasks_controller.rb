@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
-	before_action :find_project, only: [:create, :edit, :update, :destroy]
-	before_action :find_task, only: [:edit, :update, :destroy]
+	before_action :find_project, only: [:create, :edit, :update, :destroy, :show]
+	before_action :find_task, only: [:edit, :update, :destroy, :show]
 
 	def create
 		@task = @project.tasks.create(task_params)
@@ -26,8 +26,11 @@ class TasksController < ApplicationController
 		redirect_to project_path(@project)
 	end
 
-	private
+	def show
+	end
 
+	private
+	
 	def task_params
 		params.require(:task).permit(:title, :body)
 	end

@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 	end
 	
 	resources :projects do
-		resources :tasks
+		resources :tasks do
+			resources :comments
+		end
 	end
 end
