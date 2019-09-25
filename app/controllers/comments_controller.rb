@@ -1,8 +1,8 @@
 class CommentsController < ApplicationController
-	before_action :find_project, only: [:create, :edit, :update, :destroy, :show]
-	before_action :find_task, only: [:create, :edit, :update, :destroy, :show]
-	before_action :find_comment, only: [:edit, :update, :destroy]
-	
+	before_action :find_project, only: %i(create edit update destroy show)
+	before_action :find_task, only: %i(create edit update destroy show)
+	before_action :find_comment, only: %i(edit update destroy)
+
 	def create
 		@comment = @task.comments.create(comment_params)
 
@@ -13,11 +13,9 @@ class CommentsController < ApplicationController
 		end
 	end
 
-	def show
-	end
+	def show; end
 
-	def edit
-	end
+	def edit;	end
 
 	def update
 		if @comment.update(comment_params)
