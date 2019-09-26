@@ -4,10 +4,10 @@ class CommentsController < ApplicationController
 	before_action :find_comment, only: %i(edit update destroy)
 
 	def create
-		@user = current_user
-		@project = @user.projects.find(params[:project_id])
+		@project = Project.find(params[:project_id])
 		@task = @project.tasks.find(params[:task_id])
 		@comment = @task.comments.build(comment_params)
+		@comment.user = current_user
 
 		if @comment.save
 			redirect_to ([@project, @task])
