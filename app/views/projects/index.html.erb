@@ -2,22 +2,31 @@
 	<p><%= link_to "Создать проект", new_project_url %></p>
 <% end %>
 <h3>Список проектов</h3>
-<% @projects.each do |f| %>
-	<table style="border: black 1px solid;">
+<div class="table-responsive">
+	<table class="table table-striped table-sm">
 		<tbody>
-			<tr style="background-color: #cccccc">
-				<td style="width:300px;padding-left:3px;border: black 1px solid;">					
+			<thead>
+				<tr>
+					<th>Название проекта</th>
+					<th>Постановщик</th>
+					<th>Опции</th>
+				</tr>
+			</thead>
+			<% @projects.each do |f| %>
+				<tr>
+					<td>	
 						<%= link_to f.project_title, f %>
-				</td>
-				<% if user_signed_in? %>
-					<td style="padding-left:3px;border: black 1px solid;">
-						<%= link_to 'Изменить', edit_project_path(f) %>
 					</td>
-					<td style="padding-left:3px;border: black 1px solid;">
-						<%= link_to 'Удалить', project_path(f), method: :delete, data: { confirm: 'Вы уверены?' } %>
+					<td>	
+						<%= f.user.email %>
 					</td>
-				<% end %>
-			</tr>
+					<% if user_signed_in? %>
+						<td>
+							<%= link_to 'Изменить', edit_project_path(f) %> | <%= link_to 'Удалить', project_path(f), method: :delete, data: { confirm: 'Вы уверены?' } %>
+						</td>
+					<% end %>
+					</tr>
+			<%end%>
 		</tbody>
 	</table>
-<%end%>
+</div>

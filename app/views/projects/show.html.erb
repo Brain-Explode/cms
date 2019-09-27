@@ -1,5 +1,5 @@
 <h1 class="title">
-	<%= @project.project_title %>
+	<%= @project.project_title %> by <%= @project.user.email %>
 </h1>
 <% if user_signed_in? %>
 <p>
@@ -13,6 +13,7 @@
   	<thead>
     	<tr>
 				<th>Заголовок</th>
+				<th>Постановщик</th>
 				<% if user_signed_in? %>
 					<th>Опции</th>
 				<% end %>

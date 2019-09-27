@@ -1,10 +1,13 @@
 class CommentsController < ApplicationController
-	before_action :find_project, only: %i(create edit update destroy show)
-	before_action :find_task, only: %i(create edit update destroy show)
+	before_action :find_project, only: %i(edit update destroy show)
+	before_action :find_task, only: %i(edit update destroy show)
 	before_action :find_comment, only: %i(edit update destroy)
 
 	def create
-		@comment = @task.comments.create(comment_params)
+		@project = Project.find(params[:project_id])
+		@task = @project.tasks.find(params[:task_id])
+		@comment = @task.comments.build(comment_params)
+		@comment.user = current_user
 
 		if @comment.save
 			redirect_to ([@project, @task])

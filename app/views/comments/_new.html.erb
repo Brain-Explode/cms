@@ -2,7 +2,6 @@
 	<div class="col-md-8 order-md-1">
 		<%= form_for ([@project, @task, @task.comments.build]) do |f| %>
 			<div class="col-md-6 mb-3">
-				<%= f.text_field :name, placeholder: "Ваше имя", class: "form-control", style: "margin-bottom:10px" %>
 				<%= f.text_area :body, placeholder: "Комментарий", class: "form-control", style: "margin-bottom:10px" %>
 				<%= f.submit "Сохранить комментарий", class: "btn btn-primary btn-lg btn-block" %>
 			</div>
