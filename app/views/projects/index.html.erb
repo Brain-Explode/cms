@@ -1,5 +1,7 @@
-<% if user_signed_in? %>
-	<p><%= link_to "Создать проект", new_project_url %></p>
+<% if can? :create, @projects %>
+	<div style="width: 300px">
+		<%= link_to "Создать проект", new_project_url, class: "btn btn-primary btn-lg btn-block" %>
+	</div>
 <% end %>
 <h3>Список проектов</h3>
 <div class="table-responsive">
@@ -9,7 +11,9 @@
 				<tr>
 					<th>Название проекта</th>
 					<th>Постановщик</th>
-					<th>Опции</th>
+					<% if has_role?(:admin) %>
+						<th>Опции</th>
+					<% end %>
 				</tr>
 			</thead>
 			<% @projects.each do |f| %>
@@ -20,12 +24,13 @@
 					<td>	
 						<%= f.user.email %>
 					</td>
-					<% if user_signed_in? %>
+					<% if has_role?(:admin) %>
 						<td>
-							<%= link_to 'Изменить', edit_project_path(f) %> | <%= link_to 'Удалить', project_path(f), method: :delete, data: { confirm: 'Вы уверены?' } %>
+							<%= link_to 'Изменить', edit_project_path(f) %> | 
+							<%= link_to 'Удалить', project_path(f), method: :delete, data: { confirm: 'Вы уверены?' } %>
 						</td>
 					<% end %>
-					</tr>
+				</tr>
 			<%end%>
 		</tbody>
 	</table>

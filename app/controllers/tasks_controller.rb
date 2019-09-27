@@ -11,7 +11,9 @@ class TasksController < ApplicationController
 		redirect_to project_path(@project)
 	end
 
-	def edit;	end
+	def edit
+		authorize! :edit, @task
+	end
 
 	def update
 		if @task.update(task_params)

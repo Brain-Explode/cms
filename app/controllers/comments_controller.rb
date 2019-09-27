@@ -18,7 +18,9 @@ class CommentsController < ApplicationController
 
 	def show; end
 
-	def edit;	end
+	def edit
+		authorize! :edit, @comment
+	end
 
 	def update
 		if @comment.update(comment_params)

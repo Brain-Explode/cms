@@ -4,6 +4,7 @@ class ProjectsController < ApplicationController
 	end
 
 	def new
+		authorize! :create, @project
 		@project = Project.new
 	end
 

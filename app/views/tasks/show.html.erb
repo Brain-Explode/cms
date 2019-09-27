@@ -3,11 +3,17 @@
 		<%= @task.title %>
 	</h1>
 	<p>
+		<%= link_to 'Изменить', edit_project_task_path(@project, @task) %>
+		 | <%= link_to 'Удалить', project_task_path(@project, @task), method: :delete, data: { confirm: 'Вы уверены?' } %>
+	</p>
+	<p>
 		<%= @task.body %>
 	</p>
-	<div class="my-3 p-3 bg-white rounded shadow-sm">
-		<%= render @task.comments %>
-	</div>
+	<% if @task.comments.any? %>
+		<div class="my-3 p-3 bg-white rounded shadow-sm">
+			<%= render @task.comments %>
+		</div>
+	<% end %>
 	<h3>Добавить комментарий</h3>
 	<%= render 'comments/new' %>
 </div>
