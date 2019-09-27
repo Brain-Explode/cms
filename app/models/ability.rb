@@ -24,7 +24,6 @@ class Ability
         
         can :create, Comment
         can :create, Task
-        can :read, Project
     end
     # Define abilities for the passed in user here. For example:
     #
