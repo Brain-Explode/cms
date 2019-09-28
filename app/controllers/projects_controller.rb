@@ -4,7 +4,6 @@ class ProjectsController < ApplicationController
 	end
 
 	def new
-		authorize! :create, @project
 		@project = Project.new
 	end
 
@@ -42,6 +41,15 @@ class ProjectsController < ApplicationController
 
 	def show
 		@project = Project.find(params[:id])
+		@project_error = Project.find(params[:id])
+		@task_error = @project_error.tasks.new
+		@task_error.user = current_user
+	
+		if @task_error.save
+			redirect_to @project
+		else
+			render 'show'
+		end
 	end
 
 	private
