@@ -9,6 +9,7 @@ class TasksController < ApplicationController
 		if @task.save
   		redirect_to project_path(@project)
 	  else
+      #TODO: get rid of alert if needed
       redirect_to project_path(@project), alert: @task.errors.full_messages
     end
   end
