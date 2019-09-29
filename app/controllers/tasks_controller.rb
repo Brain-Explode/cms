@@ -5,11 +5,13 @@ class TasksController < ApplicationController
 	def create
 		@project = Project.find(params[:project_id])
 		@task = @project.tasks.build(task_params)
-		@task.user = current_user
-		@task.save
-
-		redirect_to project_path(@project)
-	end
+    @task.user = current_user
+		if @task.save
+  		redirect_to project_path(@project)
+	  else
+      redirect_to project_path(@project), alert: @task.errors.full_messages
+    end
+  end
 
 	def edit
 		authorize! :edit, @task

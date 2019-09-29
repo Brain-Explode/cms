@@ -1,16 +1,6 @@
 <div class="row">
 	<div class="col-md-8 order-md-1">
 		<%= form_for ([@project, @project.tasks.build]) do |f| %>
-			<% if @task_error.errors.any? %>
-			<div id="errors">
-				<p><%= pluralize(@task_error.errors.count, "error") %>: </p>
-				<ul>
-					<% @task_error.errors.full_messages.each do |message| %>
-					<li><%= message %></li>
-					<% end %>
-				</ul>
-			</div>
-		<% end %>
 			<div class="col-md-6 mb-3">
 				<%= f.text_field :title, placeholder: "Название задачи", class: "form-control", style: "margin-bottom:10px" %>
 				<%= f.text_area :body, placeholder: "Описание задачи", class: "form-control", style: "margin-bottom:10px" %>
