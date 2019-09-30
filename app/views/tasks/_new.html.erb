@@ -1,11 +1,11 @@
 <div class="row">
-	<div class="col-md-8 order-md-1">
-		<%= form_for ([@project, @project.tasks.build]) do |f| %>
-			<div class="col-md-6 mb-3">
-				<%= f.text_field :title, placeholder: "Название задачи", class: "form-control", style: "margin-bottom:10px" %>
-				<%= f.text_area :body, placeholder: "Описание задачи", class: "form-control", style: "margin-bottom:10px" %>
-				<%= f.submit "Сохранить задачу", class: "btn btn-primary btn-lg btn-block" %>
-			</div>
+	<div class="col-md-8 order-md-1" style="max-width: 500px">
+		<%= simple_form_for ([@project, @project.tasks.build]) do |f| %>
+			<%= f.error_notification %>
+			<%= f.input :title, label: "Название задачи" %>
+			<%= f.input :body, label: "Описание задачи" %>
+			<%= f.error :base %>
+			<%= f.button :submit, "Сохранить задачу", class: "btn btn-primary btn-lg btn-block" %>
 		<% end %>
 	</div>
 </div>

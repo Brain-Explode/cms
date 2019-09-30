@@ -1,17 +1,6 @@
-<%= form_for @project do |f| %>
-	<% if @project.errors.any? %>
-		<div id="errors">
-			<p><%= pluralize(@project.errors.count, "error") %>: </p>
-			<ul>
-				<% @project.errors.full_messages.each do |msg| %>
-				<li><%= msg %></li>
-				<% end %>
-			</ul>
-		</div>
-	<% end %>
-	<div class="col-md-6 mb-3">
-		<%= f.label "Введите название проекта:" %> <br />
-		<%= f.text_field :project_title, placeholder: "Название проекта", class: "form-control", style: "margin-bottom:10px" %>
-		<%= f.submit "Сохранить проект", class: "btn btn-primary btn-lg btn-block" %>
+<%= simple_form_for @project do |f| %>
+		<div class="col-md-6 mb-3">
+		<%= f.input :project_title, label: "Введите название проекта:" %>
+		<%= f.button :submit, "Сохранить проект", class: "btn btn-primary btn-lg btn-block" %>
 	</div>
 <% end %>

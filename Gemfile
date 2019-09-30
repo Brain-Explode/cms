@@ -57,6 +57,7 @@ gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails'
 gem 'cancancan'
 gem 'rolify'
+gem 'simple_form'
 
 group :development do
   gem 'sqlite3', '~> 1.4'
