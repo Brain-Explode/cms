@@ -12,6 +12,7 @@ class CommentsController < ApplicationController
 		if @comment.save
 			redirect_to ([@project, @task])
 		else
+			#TODO: FIX - there is no new template in case if submitted comment is not valid
 			render 'new'
 		end
 	end
