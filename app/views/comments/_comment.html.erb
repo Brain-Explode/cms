@@ -4,10 +4,12 @@
       <strong class="text-gray-dark">
 				<%= comment.user.email %>
 			</strong>
-			<div>
-				<%= link_to 'Удалить', [comment.task.project, comment.task, comment], method: :delete, data: { confirm: 'Вы уверены?'} %> 
-				| <%= link_to 'Изменить', edit_project_task_comment_path(comment.task.project, comment.task, comment) %>
-			</div>
+			<% if has_role?(:admin) || (can? :update, comment) %>
+				<div>
+					<%= link_to 'Удалить', [comment.task.project, comment.task, comment], method: :delete, data: { confirm: 'Вы уверены?'} %> 
+					| <%= link_to 'Изменить', edit_project_task_comment_path(comment.task.project, comment.task, comment) %>
+				</div>
+			<% end %>
 		</div>
 		<span class="d-block"><%= comment.body %></span>
 	</div>

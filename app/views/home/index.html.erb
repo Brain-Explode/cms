@@ -1,10 +1,31 @@
 <h1>Главная</h1>
-<% if user_signed_in? %>
-	<p><%= link_to "Создать проект", new_project_url %></p>
+<% if has_role?(:admin) %>
+	<div style="width: 300px">
+		<%= link_to "Создать проект", new_project_url, class: "btn btn-primary btn-lg btn-block" %>
+	</div>
+	<p>Show all registered users:</p>
+	<p>
+		<% @users.each do |f| %>
+			<%= f.email %>
+		<%end%>
+	</p>
 <% end %>
-<p>Show all registered users:</p>
-<p>
-	<% @users.each do |f| %>
-		<%= f.email %>
-	<%end%>
-</p>
+
+<p>create a admin user using rails console</p>
+<ul>
+	<li>user = User.new</li>
+	<li>user.email = "anyemail@address.com"</li>
+	<li>user.password = "test1234"</li>
+	<li>user.save</li>
+</ul>
+<p>or just find a desired user</p>
+<p>Add a role to the new User</p>
+<ul>
+	<li>user.add_role "admin"</li>
+</ul>
+<p>Check if the user has admin rights</p>
+<ul>
+	<li>ability = Ability.new(user)</li>
+	<li>ability.can? :manage, :all</li>
+  <li>=> true</li>
+</ul>

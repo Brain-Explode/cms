@@ -1,7 +1,7 @@
 <tr>
 	<td><%= link_to task.title, [task.project, task] %></td>
 	<td><%= task.user.email %></td>
-	<% if current_user %>
+	<% if has_role?(:admin) || (can? :update, task) %>
 		<td><%= link_to 'Изменить', edit_project_task_path(task.project, task) %>
 		 | <%= link_to 'Удалить', [task.project, task], method: :delete, data: { confirm: 'Вы уверены?' } %>
 		</td>

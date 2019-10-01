@@ -1,17 +1,25 @@
 class TasksController < ApplicationController
-	before_action :find_project, only: %i(edit update destroy show)
+	before_action :find_project, only: %i(new create edit update destroy show)
 	before_action :find_task, only: %i(edit update destroy show)
 
-	def create
-		@project = Project.find(params[:project_id])
-		@task = @project.tasks.build(task_params)
-		@task.user = current_user
-		@task.save
-
-		redirect_to project_path(@project)
+	def new
+		authorize! :new, @task
+		@task = Task.new
 	end
 
-	def edit;	end
+	def create
+		@task = @project.tasks.create(task_params)
+    @task.user = current_user
+		if @task.save
+			redirect_to project_path(@project)
+	  else
+      render 'new'
+    end
+  end
+
+	def edit
+		authorize! :edit, @task
+	end
 
 	def update
 		if @task.update(task_params)

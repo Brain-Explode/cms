@@ -12,13 +12,16 @@ class CommentsController < ApplicationController
 		if @comment.save
 			redirect_to ([@project, @task])
 		else
+			#TODO: FIX - there is no new template in case if submitted comment is not valid
 			render 'new'
 		end
 	end
 
 	def show; end
 
-	def edit;	end
+	def edit
+		authorize! :edit, @comment
+	end
 
 	def update
 		if @comment.update(comment_params)
