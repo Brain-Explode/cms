@@ -1,16 +1,19 @@
 class TasksController < ApplicationController
-	before_action :find_project, only: %i(create edit update destroy show)
+	before_action :find_project, only: %i(new create edit update destroy show)
 	before_action :find_task, only: %i(edit update destroy show)
+
+	def new
+		authorize! :new, @task
+		@task = Task.new
+	end
 
 	def create
 		@task = @project.tasks.create(task_params)
     @task.user = current_user
 		if @task.save
-  		redirect_to project_path(@project), notice: 'Comment was successfully created.'
+			redirect_to project_path(@project)
 	  else
-      #TODO: get rid of alert if needed
-      #redirect_to project_path(@project), alert: @task.errors.full_messages
-      redirect_to project_path(@project), notice: 'Comment not created.'
+      render 'new'
     end
   end
 

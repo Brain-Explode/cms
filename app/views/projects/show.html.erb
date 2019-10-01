@@ -2,10 +2,10 @@
 	<%= @project.project_title %> by <%= @project.user.email %>
 </h1>
 <% if has_role?(:admin) %>
-<p>
-	<%= link_to 'Изменить', edit_project_path(@project) %>
-	| <%= link_to 'Удалить', project_path(@project), method: :delete, data: { confirm: 'Вы уверены?'} %>
-</p>
+	<p>
+		<%= link_to 'Изменить', edit_project_path(@project) %>
+		| <%= link_to 'Удалить', project_path(@project), method: :delete, data: { confirm: 'Вы уверены?'} %>
+	</p>
 <% end %>
 
 <div class="table-responsive">
@@ -24,5 +24,6 @@
     </tbody>
   </table>
 </div>
-<h3>Добавить новую задачу</h3>
-<%= render 'tasks/new' %>
+<div style="width: 300px">
+	<%= link_to "Добавить новую задачу", new_project_task_path(@project), class: "btn btn-primary btn-lg btn-block" %>
+</div>

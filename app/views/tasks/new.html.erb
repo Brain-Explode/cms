@@ -1,10 +1,9 @@
 <div class="row">
 	<div class="col-md-8 order-md-1" style="max-width: 500px">
-		<%= simple_form_for ([@project, @project.tasks.build]) do |f| %>
+		<%= simple_form_for ([@project, @task]) do |f| %>
 			<%= f.error_notification %>
 			<%= f.input :title, label: "Название задачи" %>
 			<%= f.input :body, label: "Описание задачи" %>
-			<%= f.error :base %>
 			<%= f.button :submit, "Сохранить задачу", class: "btn btn-primary btn-lg btn-block" %>
 		<% end %>
 	</div>
