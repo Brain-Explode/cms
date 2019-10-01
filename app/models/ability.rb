@@ -19,6 +19,8 @@ class Ability
       #client only can read
       elsif user.has_role? :client
         can :read, :all
+      else 
+        can :read, :all
     end
 
     # Define abilities for the passed in user here. For example:

@@ -16,7 +16,7 @@
 			<%= render @task.comments %>
 		</div>
 	<% end %>
-	<% unless has_role?(:client) %>
+	<% if has_role?(:admin) || has_role?(:employee) %>
 	<h3>Добавить комментарий</h3>
 	<%= render 'comments/new' %>
 	<% end %>
