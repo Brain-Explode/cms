@@ -24,6 +24,8 @@
     </tbody>
   </table>
 </div>
+<% if has_role?(:admin) %>
 <div style="width: 300px">
 	<%= link_to "Добавить новую задачу", new_project_task_path(@project), class: "btn btn-primary btn-lg btn-block" %>
 </div>
+<% end %>
