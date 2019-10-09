@@ -6,7 +6,10 @@
 	<p>Show all registered users:</p>
 	<p>
 		<% @users.each do |f| %>
-			<%= f.email %>
+			<p>
+				<%= f.email %>
+				<%= f.roles.first.name =%>
+			</p>
 		<%end%>
 	</p>
 <% end %>
