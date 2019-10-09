@@ -7,20 +7,20 @@ class Ability
     #admin can all
     if user.has_role? :admin
       can :manage, :all
-      #employee can create comments and edit\destroy self comments
-      elsif user.has_role? :employee
-        can :create, Comment
-        can :update, Comment do |comment|
-          comment.user == user
-        end
-        can :destroy, Comment do |comment|
-          comment.user == user
-        end
-      #client only can read
-      elsif user.has_role? :client
-        can :read, :all
-      else 
-        can :read, :all
+    #employee can create comments and edit\destroy self comments
+    elsif user.has_role? :employee
+      can :create, Comment
+      can :update, Comment do |comment|
+        comment.user == user
+      end
+      can :destroy, Comment do |comment|
+        comment.user == user
+      end
+    #client only can read
+    elsif user.has_role? :client
+      can :read, :all
+    else
+      can :read, :all
     end
 
     # Define abilities for the passed in user here. For example:
