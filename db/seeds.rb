@@ -20,7 +20,6 @@ roles =[
   [manager]
 ]
 
-
 users.each do |email, password|
   User.create(email: email, password: password)
 end
