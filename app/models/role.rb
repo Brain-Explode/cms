@@ -8,6 +8,7 @@ class Role < ApplicationRecord
   validates :resource_type,
             :inclusion => { :in => Rolify.resource_types },
             :allow_nil => true
-
+  # accepts_nested_attributes_for :user
+  attr_accessor :_keep
 scopify
 end
