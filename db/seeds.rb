@@ -13,6 +13,18 @@ users = [
   ['igor@gmail.com', '123123']
 ]
 
+roles =[
+  [admin],
+  [employee],
+  [client],
+  [manager]
+]
+
+
 users.each do |email, password|
   User.create(email: email, password: password)
+end
+
+roles.each do |role_name|
+  Role.create(name: role_name)
 end

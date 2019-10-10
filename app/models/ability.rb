@@ -19,6 +19,9 @@ class Ability
     #client only can read
     elsif user.has_role? :client
       can :read, :all
+    elsif user.has_role? :manager
+      can :read, :all
+    #TODO: to think about manager
     else
       can :read, :all
     end
