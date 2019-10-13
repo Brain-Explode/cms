@@ -28,7 +28,11 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'rspec-rails'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'pry-rails'
+  gem 'factory_bot_rails'
+  gem 'faker'
 end
 
 group :development do
@@ -38,7 +42,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'pry-rails'
+  gem 'sqlite3', '~> 1.4'
 end
 
 group :test do
@@ -47,6 +51,11 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
+end
+
+group :production do
+  gem 'pg'
+  gem 'rails_12factor'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -59,11 +68,3 @@ gem 'cancancan'
 gem 'rolify'
 gem 'simple_form'
 
-group :development do
-  gem 'sqlite3', '~> 1.4'
-end
-
-group :production do
-  gem 'pg'
-  gem 'rails_12factor'
-end

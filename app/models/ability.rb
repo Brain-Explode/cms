@@ -4,27 +4,28 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    
+    #admin can all
     if user.has_role? :admin
       can :manage, :all
-
-      else
-        can :update, Comment do |comment|
-          comment.user == user
-        end
-        can :destroy, Comment do |comment|
-          comment.user == user
-        end
-        can :update, Task do |task|
-          task.user == user
-        end
-        can :destroy, Task do |task|
-          task.user == user
-        end
-        
-        can :create, Comment
-        can :create, Task
+    #employee can create comments and edit\destroy self comments
+    elsif user.has_role? :employee
+      can :create, Comment
+      can :update, Comment do |comment|
+        comment.user == user
+      end
+      can :destroy, Comment do |comment|
+        comment.user == user
+      end
+    #client only can read
+    elsif user.has_role? :client
+      can :read, :all
+    elsif user.has_role? :manager
+      can :read, :all
+    #TODO: to think about manager
+    else
+      can :read, :all
     end
+
     # Define abilities for the passed in user here. For example:
     #
     #   user ||= User.new # guest user (not logged in)

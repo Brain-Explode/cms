@@ -7,10 +7,12 @@ Rails.application.routes.draw do
 		get "sign_in" => "devise/sessions#new"
 		get "sign_out" => "devise/sessions#destroy"
 	end
-	
+
 	resources :projects do
 		resources :tasks do
 			resources :comments
 		end
 	end
+
+	resources :users
 end

@@ -2,10 +2,12 @@
 	<h1 class="mt-5">
 		<%= @task.title %>
 	</h1>
-	<p>
-		<%= link_to 'Изменить', edit_project_task_path(@project, @task) %>
-		 | <%= link_to 'Удалить', project_task_path(@project, @task), method: :delete, data: { confirm: 'Вы уверены?' } %>
-	</p>
+	<% if has_role?(:admin) %>
+		<p>
+			<%= link_to 'Изменить', edit_project_task_path(@project, @task) %>
+			 | <%= link_to 'Удалить', project_task_path(@project, @task), method: :delete, data: { confirm: 'Вы уверены?' } %>
+		</p>
+	<% end %>
 	<p>
 		<%= @task.body %>
 	</p>
@@ -14,6 +16,8 @@
 			<%= render @task.comments %>
 		</div>
 	<% end %>
+	<% if has_role?(:admin) || has_role?(:employee) %>
 	<h3>Добавить комментарий</h3>
 	<%= render 'comments/new' %>
+	<% end %>
 </div>

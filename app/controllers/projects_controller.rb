@@ -20,6 +20,7 @@ class ProjectsController < ApplicationController
 	end
 
 	def edit
+		authorize! :edit, @project
 		@project = Project.find(params[:id])
 	end
 

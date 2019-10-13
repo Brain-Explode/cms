@@ -5,8 +5,12 @@
 	</div>
 	<p>Show all registered users:</p>
 	<p>
-		<% @users.each do |f| %>
-			<%= f.email %>
+		<% @users.each do |user| %>
+			<p>
+				<%= user.email %>
+				<%= user.roles.map(&:name) =%>
+				<%= link_to "Update user settings", edit_user_path(user) %>
+			</p>
 		<%end%>
 	</p>
 <% end %>
