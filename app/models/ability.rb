@@ -16,14 +16,13 @@ class Ability
       can :destroy, Comment do |comment|
         comment.user == user
       end
+      cannot :read, User
     #client only can read
     elsif user.has_role? :client
-      can :read, :all
+      cannot :read, User
     elsif user.has_role? :manager
-      can :read, :all
+      cannot :read, User
     #TODO: to think about manager
-    else
-      can :read, :all
     end
 
     # Define abilities for the passed in user here. For example:

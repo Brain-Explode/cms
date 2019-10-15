@@ -1,12 +1,19 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  def edit; end
+  def edit
+    authorize! :edit, @users
+  end
+
+  def show
+    authorize! :show, @users
+    @users = User.all
+  end
 
   def update
     if @user.update(user_params)
       redirect_to root_path, notice: 'User was successfully updated.'
     else
-      #TODO handle this correctly
+      #I like it
       redirect_to root_path, notice: 'Wake up Neo, you obosralsya.'
     end
   end
