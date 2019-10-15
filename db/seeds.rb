@@ -7,17 +7,17 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 users = [
-  ['alex@gmail.com', '123123'],
-  ['mike@gmail.com', '123123'],
-  ['paul@gmail.com', '123123'],
-  ['igor@gmail.com', '123123']
+  ['admin@gmail.com', '123123'],
+  ['user1@gmail.com', '123123'],
+  ['user2@gmail.com', '123123'],
+  ['user3@gmail.com', '123123']
 ]
 
 roles =[
-  [admin],
-  [employee],
-  [client],
-  [manager]
+  'admin',
+  'employee',
+  'client',
+  'manager'
 ]
 
 users.each do |email, password|
@@ -26,4 +26,9 @@ end
 
 roles.each do |role_name|
   Role.create(name: role_name)
+end
+
+#default admin - user with id = 1
+User.find(1) do |f|
+f.add_role :admin
 end
