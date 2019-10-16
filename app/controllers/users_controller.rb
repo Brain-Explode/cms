@@ -9,11 +9,6 @@ class UsersController < ApplicationController
     authorize! :edit, @users
   end
 
-  def index
-    authorize! :show, @users
-    @users = User.all
-  end
-
   def show; end
 
   def update
