@@ -1,13 +1,20 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  def index
+    authorize! :index, @users
+    @users = User.all
+  end
+
   def edit
     authorize! :edit, @users
   end
 
-  def show
+  def index
     authorize! :show, @users
     @users = User.all
   end
+
+  def show; end
 
   def update
     if @user.update(user_params)
