@@ -11,6 +11,17 @@
 				</div>
 			<% end %>
 		</div>
-		<span class="d-block"><%= comment.body %></span>
+		<span class="d-block">
+			<%= comment.body %>
+			<% (0...comment.images.count).each do |image| %>
+				<div style="width: 30%; height: 30%">
+					<%= image_tag(comment.images[image], style:'width:100%; height:auto') %>
+				</div>
+			<% end %>
+			<br>
+			<% (0...comment.files.count).each do |file| %>
+				<%= link_to "download file", comment.files[file] %> <br>
+			<% end %>
+		</span>
 	</div>
 </div>

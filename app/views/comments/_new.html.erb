@@ -3,6 +3,10 @@
 		<%= form_for ([@project, @task, @task.comments.build]) do |f| %>
 			<div class="col-md-6 mb-3">
 				<%= f.text_area :body, placeholder: "Комментарий", class: "form-control", style: "margin-bottom:10px" %>
+				<%= f.label :files %>
+				<%= f.file_field :files, multiple: true  %>
+				<%= f.label :images %>
+				<%= f.file_field :images, multiple: true %>
 				<%= f.submit "Сохранить комментарий", class: "btn btn-primary btn-lg btn-block" %>
 			</div>
 		<% end %>
