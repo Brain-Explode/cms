@@ -1,0 +1,9 @@
+<p>
+	<% @users.each do |user| %>
+		<p>
+			<%= user.email %>
+			<%= user.roles.map(&:name) =%>
+			<%= link_to "Update user settings", edit_user_path(user) %>
+		</p>
+	<%end%>
+</p>

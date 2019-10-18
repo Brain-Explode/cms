@@ -3,33 +3,4 @@
 	<div style="width: 300px">
 		<%= link_to "Создать проект", new_project_url, class: "btn btn-primary btn-lg btn-block" %>
 	</div>
-	<p>Show all registered users:</p>
-	<p>
-		<% @users.each do |user| %>
-			<p>
-				<%= user.email %>
-				<%= user.roles.map(&:name) =%>
-				<%= link_to "Update user settings", edit_user_path(user) %>
-			</p>
-		<%end%>
-	</p>
 <% end %>
-
-<p>create a admin user using rails console</p>
-<ul>
-	<li>user = User.new</li>
-	<li>user.email = "anyemail@address.com"</li>
-	<li>user.password = "test1234"</li>
-	<li>user.save</li>
-</ul>
-<p>or just find a desired user</p>
-<p>Add a role to the new User</p>
-<ul>
-	<li>user.add_role "admin"</li>
-</ul>
-<p>Check if the user has admin rights</p>
-<ul>
-	<li>ability = Ability.new(user)</li>
-	<li>ability.can? :manage, :all</li>
-  <li>=> true</li>
-</ul>

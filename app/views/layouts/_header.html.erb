@@ -12,6 +12,11 @@
       <li class="nav-item">
         <%= link_to "Список проектов", projects_url, class: "nav-link" %>
       </li>
+      <li class="nav-item">
+        <% if has_role?(:admin) %>
+          <%= link_to "Сотрудники", users_path, class: "nav-link" %>
+        <% end %>
+      </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">test dropdown</a>
         <div class="dropdown-menu" aria-labelledby="dropdown04">
