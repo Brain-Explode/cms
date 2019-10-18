@@ -40,7 +40,7 @@ class CommentsController < ApplicationController
 	private
 
 	def comment_params
-		params.require(:comment).permit(:name, :body)
+		params.require(:comment).permit(:name, :body, files: [], images: [])
 	end
 
 	def find_project
