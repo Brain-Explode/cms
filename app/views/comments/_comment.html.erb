@@ -6,7 +6,7 @@
 			</strong>
 			<% if has_role?(:admin) || (can? :update, comment) %>
 				<div>
-					<%= link_to 'Удалить', [comment.task.project, comment.task, comment], method: :delete, data: { confirm: 'Вы уверены?'} %> 
+					<%= link_to 'Удалить', [comment.task.project, comment.task, comment], method: :delete, data: { confirm: 'Вы уверены?'} %>
 					| <%= link_to 'Изменить', edit_project_task_comment_path(comment.task.project, comment.task, comment) %>
 				</div>
 			<% end %>
@@ -20,7 +20,7 @@
 			<% end %>
 			<br>
 			<% (0...comment.files.count).each do |file| %>
-				<%= link_to "download file", comment.files[file] %> <br>
+				<%= link_to "download file (#{comment.files[file].blob.filename})", comment.files[file] %> <br>
 			<% end %>
 		</span>
 	</div>
