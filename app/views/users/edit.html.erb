@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-md-8 order-md-1">
     <h3>Change user</h3>
-    <%= simple_form_for @user do |f| %>
+    <%= simple_form_for @users do |f| %>
       <div class="col-md-6 mb-3">
         <%= f.text_area :email, placeholder: "new email", class: "form-control", style: "margin-bottom:10px" %>
         <%= f.input :role_ids, :as => :select, :collection => Role.all %>
