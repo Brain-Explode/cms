@@ -46,6 +46,12 @@ class ProjectsController < ApplicationController
 		@project = Project.find(params[:id])
 	end
 
+  def many_users(project_title, email, &block)
+    #stuff
+  end
+
+  helper_method :many_users
+
 	private
 
 	def project_params

@@ -23,7 +23,10 @@
 							<%= link_to f.project_title, f %>
 						</td>
 						<td>
-							<%= f.user.email %>
+							<!-- fix this shit pls. I dont understand how to use methods in views -->
+							<% def many_users(f, email) %>
+								<%= f.user.each{ |user| user.email } %>
+							<% end %>
 						</td>
 						<% if has_role?(:admin) %>
 							<td>
