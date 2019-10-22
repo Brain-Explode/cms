@@ -16,22 +16,24 @@
 					<% end %>
 				</tr>
 			</thead>
-			<% @projects.each do |f| %>
-				<tr>
-					<td>	
-						<%= link_to f.project_title, f %>
-					</td>
-					<td>	
-						<%= f.user.email %>
-					</td>
-					<% if has_role?(:admin) %>
+			<% if can? :read, :projects %>
+				<% @projects.each do |f| %>
+					<tr>
 						<td>
-							<%= link_to 'Изменить', edit_project_path(f) %> | 
-							<%= link_to 'Удалить', project_path(f), method: :delete, data: { confirm: 'Вы уверены?' } %>
+							<%= link_to f.project_title, f %>
 						</td>
-					<% end %>
-				</tr>
-			<%end%>
+						<td>
+							<%= f.user.email %>
+						</td>
+						<% if has_role?(:admin) %>
+							<td>
+								<%= link_to 'Изменить', edit_project_path(f) %> |
+								<%= link_to 'Удалить', project_path(f), method: :delete, data: { confirm: 'Вы уверены?' } %>
+							</td>
+						<% end %>
+					</tr>
+				<% end %>
+			<% end %>
 		</tbody>
 	</table>
 </div>

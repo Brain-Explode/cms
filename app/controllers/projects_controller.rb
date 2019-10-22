@@ -42,6 +42,7 @@ class ProjectsController < ApplicationController
 	end
 
 	def show
+		authorize! :show, @project
 		@project = Project.find(params[:id])
 	end
 

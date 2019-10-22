@@ -35,7 +35,9 @@ class TasksController < ApplicationController
 		redirect_to project_path(@project)
 	end
 
-	def show;	end
+	def show
+		authorize! :show, @task
+	end
 
 	private
 

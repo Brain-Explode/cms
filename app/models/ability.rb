@@ -19,7 +19,11 @@ class Ability
       cannot :read, User
     #client only can read
     elsif user.has_role? :client
-      cannot :read, User
+      cannot :manage, :all
+      #TODO: add ability to share project to client
+      can :read, Project do |project|
+        #something
+      end
     elsif user.has_role? :manager
       cannot :read, User
     #TODO: to think about manager
