@@ -15,12 +15,14 @@
 			<%= comment.body %>
 			<% (0...comment.images.count).each do |image| %>
 				<div style="width: 30%; height: 30%">
-					<%= image_tag(comment.images[image], style:'width:100%; height:auto') %>
+					<%= image_tag(comment.images[image], style:'width:100%; height:auto') %> |
 				</div>
+			<%= link_to 'Удалить изображение', comment.purge_images[image] %>
 			<% end %>
 			<br>
 			<% (0...comment.files.count).each do |file| %>
 				<%= link_to "download file (#{comment.files[file].blob.filename})", comment.files[file] %> <br>
+				<%= link_to 'Удалить файл', comment.purge_files[file] %>
 			<% end %>
 		</span>
 	</div>

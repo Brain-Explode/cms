@@ -1,5 +1,6 @@
 <h1 class="title">
-	<%= @project.project_title %> by <%= @project.user.email %>
+	<%= @project.project_title %>
+	<!-- TODO: add created_by field -->
 </h1>
 <% if has_role?(:admin) %>
 	<p>
@@ -8,7 +9,12 @@
 	</p>
 <% end %>
 <% if @project.file.present? %>
-	<%= link_to 'Скачать файл', @project.file %>
+	<%= link_to 'Скачать файл', @project.file %> |
+	<%= simple_form_for @project do |f| %>
+		<%= f.label :purge_file %>
+    <%= f.check_box :purge_file %>
+    <%= f.button :submit %>
+  <% end %>
 <% end %>
 <div class="table-responsive">
 	<table class="table table-striped table-sm">
