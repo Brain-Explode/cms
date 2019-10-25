@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
-	before_action :find_project, only: %i(edit update destroy show)
-	before_action :find_task, only: %i(edit update destroy show)
+	before_action :find_project, only: %i(edit update destroy show delete_files)
+	before_action :find_task, only: %i(edit update destroy show delete_files)
 	before_action :find_comment, only: %i(edit update destroy)
 
 	def create
@@ -37,6 +37,13 @@ class CommentsController < ApplicationController
 		redirect_to ([@project, @task])
 	end
 
+	def delete_files
+
+		@task.comments.find(params[:comment_id]).files.blobs.delete_all
+
+		redirect_to ([@project, @task])
+	end
+
 	private
 
 	def comment_params
@@ -52,6 +59,7 @@ class CommentsController < ApplicationController
 	end
 
 	def find_comment
+		binding.pry
 		@comment = @task.comments.find(params[:id])
 	end
 end

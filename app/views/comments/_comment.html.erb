@@ -21,6 +21,7 @@
 			<br>
 			<% (0...comment.files.count).each do |file| %>
         <%= link_to "download file (#{comment.files[file].blob.filename})", comment.files[file],  download: "file_name" %> <br>
+				<%= link_to 'delete files', project_task_comment_delete_files_path(comment.task.project, comment.task, comment) %>
 			<% end %>
 		</span>
 	</div>
