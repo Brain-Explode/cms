@@ -59,7 +59,6 @@ class CommentsController < ApplicationController
 	end
 
 	def find_comment
-		binding.pry
 		@comment = @task.comments.find(params[:id])
 	end
 end
