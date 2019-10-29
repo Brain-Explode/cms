@@ -38,8 +38,17 @@ class CommentsController < ApplicationController
 	end
 
 	def delete_files
-
+		@project = Project.find(params[:project_id])
+		@task = @project.tasks.find(params[:task_id])
 		@task.comments.find(params[:comment_id]).files.blobs.delete_all
+
+		redirect_to ([@project, @task])
+	end
+
+	def delete_images
+		@project = Project.find(params[:project_id])
+		@task = @project.tasks.find(params[:task_id])
+		@task.comments.find(params[:comment_id]).images.blobs.delete_all
 
 		redirect_to ([@project, @task])
 	end

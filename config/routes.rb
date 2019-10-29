@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 		resources :tasks do
 			resources :comments do
   			get 'delete_files'
+  			get 'delete_images'
   		end
 		end
 	end

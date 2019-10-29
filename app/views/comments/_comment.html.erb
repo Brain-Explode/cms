@@ -18,11 +18,16 @@
 					<%= image_tag(comment.images[image], style:'width:100%; height:auto') %>
 				</div>
 			<% end %>
+			<% if comment.images.any? %>
+				<%= link_to 'delete images', project_task_comment_delete_images_path(comment.task.project, comment.task, comment) %>
+			<% end %>
 			<br>
 			<% (0...comment.files.count).each do |file| %>
         <%= link_to "download file (#{comment.files[file].blob.filename})", comment.files[file],  download: "file_name" %> <br>
-				<%= link_to 'delete files', project_task_comment_delete_files_path(comment.task.project, comment.task, comment) %>
 			<% end %>
 		</span>
+		<% if comment.files.any? %>
+			<%= link_to 'delete files', project_task_comment_delete_files_path(comment.task.project, comment.task, comment) %>
+		<% end %>
 	</div>
 </div>
