@@ -10,7 +10,10 @@ Rails.application.routes.draw do
 
 	resources :projects do
 		resources :tasks do
-			resources :comments
+			resources :comments do
+  			get 'delete_files'
+  			get 'delete_images'
+  		end
 		end
 	end
 
