@@ -7,7 +7,7 @@ class Comment < ApplicationRecord
 
   attr_accessor :remove_images, :boolean
 
-  after_save :purge_images,
+  after_save :purge_images
 
   def purge_images
     return unless @remove_images == '1'
