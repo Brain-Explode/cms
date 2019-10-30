@@ -4,6 +4,10 @@
 		<%= form_for ([@project, @task, @comment]) do |f| %>
 			<div class="col-md-6 mb-3">
 				<%= f.text_area :body, placeholder: "Комментарий", class: "form-control", style: "margin-bottom:10px" %>
+        <% if @comment.images.attached? %>
+          <%= f.label :remove_images %>
+          <%= f.check_box(:remove_images) %>
+        <% end %>
 				<%= f.submit "Сохранить комментарий", class: "btn btn-primary btn-lg btn-block" %>
 			</div>
 		<% end %>
