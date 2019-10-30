@@ -14,7 +14,6 @@
 		<span class="d-block">
 			<%= comment.body %>
 			<% (0...comment.images.count).each do |image| %>
-				<% binding.pry %>
 				<div style="width: 30%; height: 30%">
 					<%= link_to image_tag(comment.images[image], style:'width:100%; height:auto'), comment.images[image] %>
 				</div>
