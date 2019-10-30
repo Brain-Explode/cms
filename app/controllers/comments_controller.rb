@@ -56,7 +56,7 @@ class CommentsController < ApplicationController
 	private
 
 	def comment_params
-		params.require(:comment).permit(:name, :body, :remove_images, files: [], images: [])
+		params.require(:comment).permit(:name, :body, :remove_images, :remove_files, files: [], images: [])
 	end
 
 	def find_project
