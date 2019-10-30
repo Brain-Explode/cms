@@ -10,10 +10,7 @@ class Comment < ApplicationRecord
   after_save :purge_images,
 
   def purge_images
-    if @remove_images == '1'
+    return unless @remove_images == '1'
       images.purge_later
-    else
-      return
-    end
   end
 end
