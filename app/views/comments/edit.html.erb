@@ -7,6 +7,11 @@
         <% if @comment.images.attached? %>
           <%= f.label :remove_images %>
           <%= f.check_box(:remove_images) %>
+          <br>
+        <% end %>
+        <% if @comment.files.attached? %>
+          <%= f.label :remove_files %>
+          <%= f.check_box(:remove_files) %>
         <% end %>
 				<%= f.submit "Сохранить комментарий", class: "btn btn-primary btn-lg btn-block" %>
 			</div>
