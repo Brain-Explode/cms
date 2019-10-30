@@ -15,7 +15,7 @@
 			<%= comment.body %>
 			<% (0...comment.images.count).each do |image| %>
 				<div style="width: 30%; height: 30%">
-					<%= link_to image_tag(comment.images[image], style:'width:100%; height:auto'), comment.images[image] %>
+					<%= link_to image_tag(comment.images[image], style:'width:100%; height:auto'), comment.images[image], target: :blank %>
 				</div>
 			<% end %>
 			<% if comment.images.any? %>
