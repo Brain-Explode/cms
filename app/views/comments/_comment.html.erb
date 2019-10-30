@@ -14,8 +14,9 @@
 		<span class="d-block">
 			<%= comment.body %>
 			<% (0...comment.images.count).each do |image| %>
+				<% binding.pry %>
 				<div style="width: 30%; height: 30%">
-					<%= image_tag(comment.images[image], style:'width:100%; height:auto') %>
+					<%= link_to image_tag(comment.images[image], style:'width:100%; height:auto'), comment.images[image] %>
 				</div>
 			<% end %>
 			<% if comment.images.any? %>
@@ -23,7 +24,7 @@
 			<% end %>
 			<br>
 			<% (0...comment.files.count).each do |file| %>
-        <%= link_to "download file (#{comment.files[file].blob.filename})", comment.files[file],  download: "file_name" %> <br>
+        <%= link_to  "download file (#{comment.files[file].blob.filename})", rails_blob_path(comment.files[file], disposition: :attachment) %> <br>
 			<% end %>
 		</span>
 		<% if comment.files.any? %>
