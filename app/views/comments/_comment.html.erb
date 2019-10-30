@@ -24,7 +24,7 @@
 			<% end %>
 			<br>
 			<% (0...comment.files.count).each do |file| %>
-        <%= link_to  "download file (#{comment.files[file].blob.filename})", rails_blob_path(comment.files[file], disposition: :attachment) %> <br>
+        <%= link_to "download file (#{comment.files[file].blob.filename})", rails_blob_path(comment.files[file], disposition: :attachment) %> <br>
 			<% end %>
 		</span>
 		<% if comment.files.any? %>
