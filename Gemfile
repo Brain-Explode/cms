@@ -67,4 +67,5 @@ gem 'jquery-rails'
 gem 'cancancan'
 gem 'rolify'
 gem 'simple_form'
+gem 'public_activity'
 
