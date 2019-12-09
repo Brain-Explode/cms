@@ -9,14 +9,8 @@ class ProjectsController < ApplicationController
 	end
 
 	def create
-		@user = current_user
-		@project = @user.projects.create(project_params)
-
-		if @project.save
-			redirect_to @project
-		else
-			render 'new'
-		end
+		ReportWorker.perform_async()
+		render text: "request added to queue"
 	end
 
 	def edit
@@ -44,6 +38,7 @@ class ProjectsController < ApplicationController
 	def show
 		@project = Project.find(params[:id])
 	end
+
 
 	private
 

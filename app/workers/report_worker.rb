@@ -2,8 +2,15 @@ class ReportWorker
 	include Sidekiq::Worker
 	sidekiq_options retry: false
 
-	def perform(start_date, end_date)
-		puts "SIDEKIQ worker generating a report from #{start_date} to #{end_date}"
+	def perform()
+		@user = current_user
+		@project = @user.projects.create(project_params)
+
+		if @project.save
+			redirect_to @project
+		else
+			render 'new'
+		end
 	end
 
 end
